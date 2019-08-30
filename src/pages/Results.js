@@ -61,7 +61,7 @@ class Results extends React.Component {
           {
             this.state.votes.map(p => {
               return (
-                <div className="result">
+                <div key={p.answer_id} className="result">
                   {p.option} - {p.count} ({Number(p.count / totalVotes).toFixed(2)}%)
                 </div>
               )

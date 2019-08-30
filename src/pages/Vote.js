@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+import clipboardCopy from 'clipboard-copy'
 
 import './Vote.css'
 
@@ -54,6 +55,10 @@ class Vote extends React.Component {
     })
   }
 
+  copyLink() {
+    clipboardCopy(window.location);
+  }
+
   render() {
     if(this.state.redirectToResults) return <Redirect to={'/' + this.props.match.params.id + '/r'} />
     return (
@@ -63,6 +68,7 @@ class Vote extends React.Component {
           this.state.poll.options && (<VoteOptionGroup options={this.state.poll.options} onselect={this.onOptionSelect} />)
         }
         <button className="poll-button" onClick={this.castVote}>Vote</button>
+        <button className="poll-button" style={{marginTop: 10 + 'px'}} onClick={() => this.copyLink()}>Copy poll URL</button>
       </div>
     )
   }
