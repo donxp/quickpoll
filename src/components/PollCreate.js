@@ -1,14 +1,17 @@
 import React from 'react'
 import './PollCreate.css'
+import ErrorBox from './ErrorBox'
 
 class PollCreate extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       question: '',
-      answers: []
+      answers: [],
+      errors: []
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.createPollClick = this.createPollClick.bind(this)
   }
 
   handleInputChange(event) {
@@ -36,6 +39,27 @@ class PollCreate extends React.Component {
     }
   }
 
+  validate() {
+    this.setState({
+      errors: []
+    })
+    const errors = []
+    if (this.state.answers.length < 2) {
+      errors.push('Poll must have at least 2 answers.')
+    }
+    if (this.state.question.length < 1) {
+      errors.push('Poll must have a question.')
+    }
+    this.setState({
+      errors
+    })
+  }
+
+  createPollClick() {
+    // Validate
+    this.validate()
+  }
+
   render() {
     const answersInputs = []
     for(let i = 0; i < this.state.answers.length+1; i++) {
@@ -52,7 +76,7 @@ class PollCreate extends React.Component {
     }
     return (
       <div className="poll-create-form">
-        <p>{this.state.question}</p>
+        {this.state.errors.length > 0 && <ErrorBox errors={this.state.errors} />}
         <input
           className="question"
           name="question"
@@ -63,7 +87,7 @@ class PollCreate extends React.Component {
         <div className="answers">
           {answersInputs}
         </div>
-        <button className="create-poll-button">Create</button>
+        <button className="create-poll-button" onClick={this.createPollClick}>Create</button>
       </div>
     )
   }

@@ -1,0 +1,10 @@
+.errors-box {
+    border: 1px solid red;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.errors-box > ul > li {
+    font-size: 0.9em;
+}
