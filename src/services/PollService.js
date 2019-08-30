@@ -19,6 +19,10 @@ class PollService {
       answer_id
     })
   }
+
+  static getVotes(id) {
+    return axios.get(root + 'votes/' + id)
+  }
 }
 
 export default PollService

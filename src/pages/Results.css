@@ -3,3 +3,14 @@
     text-align: center;
     font-weight: 600;
 }
+
+.results-group > .result {
+    margin-top: 30px;
+    margin-left: 15px;
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.results-chart > div > svg {
+    max-height: 200px;
+}
