@@ -2,6 +2,7 @@ import React from 'react'
 import './Results.css'
 import PollService from '../services/PollService'
 import PieChart from "react-minimal-pie-chart"
+import { SocketConnect, SocketEvent } from 'react-socket-io-client'
 
 class Results extends React.Component {
 
@@ -47,6 +48,17 @@ class Results extends React.Component {
     return <PieChart data={data}/>
   }
 
+  onNewVote(id) {
+    const list = this.state.votes
+    const idx = list.findIndex(p => p.answer_id === id)
+    if (idx !== -1) {
+      list[idx].count += 1
+    }
+    this.setState({
+      votes: list
+    })
+  }
+
   render() {
     let totalVotes = 0
     for(let i = 0; i < this.state.votes.length; i++) {
@@ -71,6 +83,9 @@ class Results extends React.Component {
         <div className="results-chart">
           {this.renderChart(this.state.votes)}
         </div>
+        <SocketConnect url={"http://localhost:3000/"} >
+          <SocketEvent name={"vote"} callback={(args) => this.onNewVote(args) }/>
+        </SocketConnect>
       </div>
     )
   }
