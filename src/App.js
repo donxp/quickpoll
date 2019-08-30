@@ -5,7 +5,12 @@ import PollCreate from './components/PollCreate'
 function App() {
   return (
     <div className="app">
-      <header>This is a header!</header>
+      <header>
+        Quick Poll
+        <div className="subheader">
+          Create real-time polls in seconds!
+        </div>
+      </header>
       <PollCreate />
     </div>
   );

@@ -1,0 +1,32 @@
+.poll-create-form {
+    width: 80%;
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 5px #ccc;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.poll-create-form > input.question {
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    height: 40px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    color: #333;
+}
+
+.answers {
+    margin-top: 50px;
+}
+
+.answers > input {
+    border: 0;
+    width: calc(100% - 20px);
+    height: 40px;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    color: black;
+    border-bottom: 1px solid  black;
+}

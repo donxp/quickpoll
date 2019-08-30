@@ -1,4 +1,5 @@
 .app {
+    font-family: "Open Sans", sans-serif;
     display: grid;
     grid-template-columns: auto [main] 1000px auto;
     grid-template-rows: auto [header] 200px [main] 40vh auto;
@@ -12,4 +13,18 @@
 .app > div {
     grid-row-start: main;
     grid-column-start: main;
+}
+
+header {
+    font-size: 3em;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+}
+
+header > div.subheader {
+    font-size: 0.3em !important;
+    margin-top: -10px;
+    margin-left: 100px;
 }
