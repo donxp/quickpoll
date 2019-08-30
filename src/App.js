@@ -18,8 +18,8 @@ function App() {
         </header>
         <div className="container">
           <Route exact path="/" component={Index} />
-          <Route path="/:id" component={Vote} />
-          <Route path="/results" component={Results} />
+          <Route exact path="/:id/r" component={Results} />
+          <Route exact path="/:id" component={Vote} />
         </div>
       </div>
     </Router>

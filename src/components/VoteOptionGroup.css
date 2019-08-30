@@ -1,0 +1,48 @@
+.vote-option {
+    margin-bottom: 30px;
+}
+
+.vote-option input[type="checkbox"] {
+    opacity: 0;
+}
+
+.vote-option input[type="checkbox"] + label::after {
+    content: none;
+}
+
+.vote-option input[type="checkbox"]:checked + label::after {
+    content: '';
+}
+
+.vote-option label {
+    position: relative;
+    display: inline-block;
+    padding-left: 33px;
+    font-weight: 600;
+    font-size: 1.2em
+}
+
+.vote-option label::before,
+.vote-option label::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+}
+
+.vote-option label::before {
+    top: 3px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 1px solid;
+}
+
+.vote-option label::after {
+    left: 5px;
+    top: 7px;
+    height: 9px;
+    width: 14px;
+    border-left: 3px solid #1ac441;
+    border-bottom: 3px solid #1ac441;
+    transform: rotate(-45deg);
+}

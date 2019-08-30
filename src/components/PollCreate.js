@@ -104,7 +104,7 @@ class PollCreate extends React.Component {
         <div className="answers">
           {answersInputs}
         </div>
-        <button className="create-poll-button" onClick={this.createPollClick}>Create</button>
+        <button className="poll-button" onClick={this.createPollClick}>Create</button>
       </div>
     )
   }
