@@ -1,6 +1,8 @@
 import React from 'react'
 import './PollCreate.css'
 import ErrorBox from './ErrorBox'
+import PollService from '../services/PollService'
+import { Redirect } from 'react-router-dom'
 
 class PollCreate extends React.Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class PollCreate extends React.Component {
     this.state = {
       question: '',
       answers: [],
-      errors: []
+      errors: [],
+      redirectToPoll: 0
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.createPollClick = this.createPollClick.bind(this)
@@ -53,14 +56,28 @@ class PollCreate extends React.Component {
     this.setState({
       errors
     })
+    return !(errors.length > 0)
   }
 
   createPollClick() {
     // Validate
-    this.validate()
+    if(this.validate()) {
+      PollService.create({
+        question: this.state.question,
+        options: this.state.answers
+      }).then(result => {
+        const data = result.data
+        if(data.success) {
+          this.setState({
+            redirectToPoll: data.id
+          })
+        }
+      })
+    }
   }
 
   render() {
+    if(this.state.redirectToPoll > 0) return <Redirect to={'/' + this.state.redirectToPoll} />
     const answersInputs = []
     for(let i = 0; i < this.state.answers.length+1; i++) {
       answersInputs.push(
