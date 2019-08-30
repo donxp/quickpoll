@@ -19,6 +19,7 @@
 
 .answers {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .answers > input {
@@ -29,4 +30,13 @@
     padding: 5px 10px;
     color: black;
     border-bottom: 1px solid  black;
+}
+
+.create-poll-button {
+    background: #1ac441;
+    border: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px 5px;
+    border-radius: 2px;
 }
